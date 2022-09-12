@@ -33,6 +33,7 @@ main:										;use break point and step mode
 			mov.b	R7, R8
 			mov.w	R8, R9
 
+
 			mov.w	#1234h, R4
 			mov.w	#0FFFFFh, R5
 			mov.b	#0FFFFFh, R6
@@ -42,11 +43,23 @@ main:										;use break point and step mode
 			mov.w	#'d', R9				;ASCII code for the string
 
 
+			mov.w	&2000h,	R4				; copy contant from memory 2000h to R4
+			mov.w	R4, &2004h				; remember to open Memory Browser
+			mov.w	&2002h,	R5
+			mov.w	R5, &2006h
+			mov.w	&2002h, &2008h
 
 
 			jmp 	main
 
+			.data							; got to data memory
+			.retain							; handles .data for now
 
+Const1:		.short		1234h				; constant at memory 2000h
+Const2:		.short		0CAFEh				; constant at memory 2002h
+
+Var1:		.space		2
+Var2:		.space		2
 
                                             
 
