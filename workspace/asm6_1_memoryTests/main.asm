@@ -47,7 +47,11 @@ main:										;use break point and step mode
 			mov.w	R4, &2004h				; remember to open Memory Browser
 			mov.w	&2002h,	R5
 			mov.w	R5, &2006h
-			mov.w	&2002h, &2008h
+			mov.w	&2002h, &2006h
+
+			mov.w	Const1, R6
+			mov.w	R6, Var3
+			mov.w	Const2, Var4
 
 
 			jmp 	main
@@ -57,9 +61,10 @@ main:										;use break point and step mode
 
 Const1:		.short		1234h				; constant at memory 2000h
 Const2:		.short		0CAFEh				; constant at memory 2002h
-
 Var1:		.space		2
 Var2:		.space		2
+Var3:		.space		2
+Var4:		.space		2
 
                                             
 
