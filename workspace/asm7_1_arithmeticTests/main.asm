@@ -46,6 +46,42 @@ main:
 			addc.w  R7, R8					; add larger 16-bit with carry
 			mov.w	R8, 2(R6)
 
+			mov.b 	#0FFh, R4
+			mov.b 	#01h, R5
+			sub.b	R5, R4					; R4 - R5
+			mov.b 	#01h, R4
+			mov.b 	#0FFh, R5
+			sub.b	R5, R4
+
+			mov.w	#Var3, R4
+ 			mov.w	#Var4, R5
+			mov.w	#Sub34, R6
+			mov.w   0(R4), R7
+			mov.w   0(R5), R8
+			sub.w	R8, R7					; sub smaller 16-bit
+			mov.w	R7, 0(R6)
+			mov.w   2(R4), R7
+			mov.w   2(R5), R8
+			subc.w  R8, R7					; sub larger 16-bit with carry
+			mov.w	R7, 2(R6)
+
+			mov.w	#Sum12, R4
+			mov.w	@R4, R5
+			inc		R4
+			mov.w	@R4, R5
+			inc		R4
+			mov.w	@R4, R5
+			incd	R4
+			mov.w	@R4, R5
+			dec		R4
+			mov.b	@R4, R5
+			dec		R4
+			mov.w	@R4, R5
+			decd	R4
+			mov.w	@R4, R5
+
+
+
 			jmp 	main
 
 
@@ -54,7 +90,9 @@ main:
 Var1:		.long	4444FFFFh
 Var2:		.long	33330002h
 Sum12:		.space	4
-
+Var3:		.long	22221FFFh
+Var4:		.long	11112FFFh
+Sub34:		.space	4
 
 
 ;-------------------------------------------------------------------------------
