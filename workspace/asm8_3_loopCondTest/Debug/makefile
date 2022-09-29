@@ -119,34 +119,34 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXE_OUTPUTS += \
-asm8_1_FlowTest.out \
+asm8_3_loopCondTest.out \
 
 EXE_OUTPUTS__QUOTED += \
-"asm8_1_FlowTest.out" \
+"asm8_3_loopCondTest.out" \
 
 BIN_OUTPUTS += \
-asm8_1_FlowTest.hex \
+asm8_3_loopCondTest.hex \
 
 BIN_OUTPUTS__QUOTED += \
-"asm8_1_FlowTest.hex" \
+"asm8_3_loopCondTest.hex" \
 
 
 # All Target
 all: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
-	@$(MAKE) --no-print-directory -Onone "asm8_1_FlowTest.out"
+	@$(MAKE) --no-print-directory -Onone "asm8_3_loopCondTest.out"
 
 # Tool invocations
-asm8_1_FlowTest.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
+asm8_3_loopCondTest.out: $(OBJS) $(CMD_SRCS) $(GEN_CMDS)
 	@echo 'Building target: "$@"'
 	@echo 'Invoking: MSP430 Linker'
-	"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/bin/cl430" -vmspx --code_model=small --data_model=small --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all --define=__MSP430FR2355__ --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"asm8_1_FlowTest.map" --heap_size=0 --stack_size=0 --cinit_hold_wdt=on -i"/Applications/ti/ccs1200/ccs/ccs_base/msp430/include" -i"/Applications/ti/ccs1200/ccs/ccs_base/msp430/lib/FR2xx" -i"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/lib" -i"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/include" --priority --reread_libs --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="asm8_1_FlowTest_linkInfo.xml" --entry_point=RESET --use_hw_mpy=F5 -o "asm8_1_FlowTest.out" $(ORDERED_OBJS)
+	"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/bin/cl430" -vmspx --code_model=small --data_model=small --use_hw_mpy=F5 --advice:power=all --advice:hw_config=all --define=__MSP430FR2355__ --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE -g --printf_support=minimal --diag_warning=225 --diag_wrap=off --display_error_number --silicon_errata=CPU21 --silicon_errata=CPU22 --silicon_errata=CPU40 -z -m"asm8_3_loopCondTest.map" --heap_size=0 --stack_size=0 --cinit_hold_wdt=on -i"/Applications/ti/ccs1200/ccs/ccs_base/msp430/include" -i"/Applications/ti/ccs1200/ccs/ccs_base/msp430/lib/FR2xx" -i"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/lib" -i"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/include" --priority --reread_libs --define=_FRWP_ENABLE --define=_INFO_FRWP_ENABLE --diag_wrap=off --display_error_number --warn_sections --xml_link_info="asm8_3_loopCondTest_linkInfo.xml" --entry_point=RESET --use_hw_mpy=F5 -o "asm8_3_loopCondTest.out" $(ORDERED_OBJS)
 	@echo 'Finished building target: "$@"'
 	@echo ' '
 
-asm8_1_FlowTest.hex: $(EXE_OUTPUTS)
+asm8_3_loopCondTest.hex: $(EXE_OUTPUTS)
 	@echo 'Building secondary target: "$@"'
 	@echo 'Invoking: MSP430 Hex Utility'
-	"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/bin/hex430" --memwidth=8 --romwidth=8 --diag_wrap=off -o "asm8_1_FlowTest.hex" $(EXE_OUTPUTS__QUOTED)
+	"/Applications/ti/ccs1200/ccs/tools/compiler/ti-cgt-msp430_21.6.0.LTS/bin/hex430" --memwidth=8 --romwidth=8 --diag_wrap=off -o "asm8_3_loopCondTest.hex" $(EXE_OUTPUTS__QUOTED)
 	@echo 'Finished building secondary target: "$@"'
 	@echo ' '
 
