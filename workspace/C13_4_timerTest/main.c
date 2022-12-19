@@ -4,7 +4,7 @@ int capturedTime = 0;           //note: looking for 0x2000 and on, compare to TB
 int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;	// stop watchdog timer
-	
+
 	P1DIR |= BIT0;              // set P1.0 (LED1) as output
 	P1OUT |= BIT0;              // turn LED1 OFF
 	PM5CTL0 &= ~LOCKLPM5;       // turn on GPIO system

@@ -19,7 +19,7 @@ int main(void)
 	P1DIR |= BIT0;              // set P1.0 (LED1) as output
 	P1OUT &= ~BIT0;             // turn LED1 OFF
 
-	P4DIR &= ~BIT1;             // set P4.1 (SW1) as input
+	P4DIR &= ~BIT1;             // set P4.1 (switch1, SW1) as input
 	P4REN |= BIT1;              // enable resistor
 	P4OUT |= BIT1;              // set resistor to pull up
 	PM5CTL0 &= ~LOCKLPM5;       // turn on GPIO system
