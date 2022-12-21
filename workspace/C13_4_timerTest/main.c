@@ -11,7 +11,7 @@ int main(void)
 
 	TB0CTL |= TBCLR;            // reset timer TB0
 	TB0CTL |= TBSSEL__ACLK;     // set clock to ACLK (32768Hz, 16bit to overflow)
-	//TB0CTL |= TBSSEL__SMCLK;    // set clock to ACLK (1MHz, 16bit to overflow)
+	//TB0CTL |= TBSSEL__SMCLK;    // set clock to SMCLK (1MHz, 16bit to overflow)
 	//TB0CTL |= CNTL_1;           // set to 12bit
 	TB0CTL |= ID__4;            // set decimation to 4
 
