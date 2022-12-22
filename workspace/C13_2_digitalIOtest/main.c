@@ -24,6 +24,7 @@ int main(void)
 	P4OUT |= BIT1;              // set resistor to pull up
 	PM5CTL0 &= ~LOCKLPM5;       // turn on GPIO system
 
+    // SW: switch
 	int SW1;
 	while(1)
 	{
