@@ -10,12 +10,12 @@ int main(void)
 {
 	WDTCTL = WDTPW | WDTHOLD;	        // stop watchdog timer
 
-	// setting 1
+    // transmit setting 1
 	UCA1CTLW0 |= UCSWRST;               // put UART A1 into reset
 	UCA1CTLW0 |= UCSSEL__SMCLK;         // set clock to ACLK (32768Hz, 16bit to overflow)
 	UCA1BRW = 8;                        // set prescaler to 8
 	UCA1MCTLW = 0xD600;                 // configure modulation setting to low frequency mode
-	// setting 2
+	// transmit setting 2
 	//UCA1CTLW0 |= UCSWRST;               // put UART A1 into reset
 	//UCA1CTLW0 |= UCSSEL__ACLK;          // set clock to ACLK (1MHz, 16bit to overflow)
 	//UCA1BRW = 3;                        // set prescaler to 3
@@ -27,17 +27,16 @@ int main(void)
 	P4IES |= BIT1;              // set sensitivity to high-to-low
 
 	//  from "Figure 4. MSP430FR2355 Pinout", the TXD connector of the jumper isolated block
-	//is associated with port 4.3
+	//is associated with port 4.3; T in TXD for transmit
 	P4SEL1 &= ~BIT3;                    // port 4.3 select = 01
 	P4SEL0 |= BIT3;                     // put UART A1 on port 4.3
 
 	PM5CTL0 &= ~LOCKLPM5;               // turn on GPIO system
 
 	UCA1CTLW0 &= ~UCSWRST;              // take UART A1 out of reset
-
-	P4IE  |= BIT1;                      // enable P4.1 interrupt
-	__enable_interrupt();               // enable maskable interrupt
+	P4IE |= BIT1;                       // enable P4.1 interrupt
 	P4IFG &= ~BIT1;                     // clear P4.1 interrupt flag
+	__enable_interrupt();               // enable maskable interrupt
 
 	/*
 	int i, j;
@@ -85,12 +84,17 @@ __interrupt void ISR_EUSCI_A1(void)
 {
     if(msgIdx == sizeof(message))
     {
-        UCA1IE &= ~UCTXCPTIE;            // turn off Tx complete IRQ
+        UCA1IE &= ~UCTXCPTIE;            // turn off Tx complete IRQ, T for transmit
     }
     else
     {
         msgIdx++;
+        // check View > Terminal > Serial Terminal > cu.usbmodem1103
+        // note, the 2 TXD pins need to be connected to show up on terminal
+        // for registers, see eUSCI_A1
         UCA1TXBUF = message[msgIdx];
     }
     UCA1IFG &= ~UCTXCPTIFG;             // clear Tx complete flag
 }
+
+
