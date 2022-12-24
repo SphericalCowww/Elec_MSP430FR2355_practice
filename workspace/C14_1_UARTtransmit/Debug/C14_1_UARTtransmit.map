@@ -1,7 +1,7 @@
 ******************************************************************************
                   MSP430 Linker Unix v21.6.0                   
 ******************************************************************************
->> Linked Sat Dec 24 00:27:08 2022
+>> Linked Sat Dec 24 19:17:35 2022
 
 OUTPUT FILE NAME:   <C14_1_UARTtransmit.out>
 ENTRY POINT SYMBOL: "_c_int00_noargs_mpu"  address: 00008324
